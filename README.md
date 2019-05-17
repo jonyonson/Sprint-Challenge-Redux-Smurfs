@@ -22,9 +22,17 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
-- [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
-- [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
-- [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+- [x] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+- The `store` is the global state container for the entire app. It stores whte state tree in an immutable object. It is known as the 'single source of truth in a redux application becuase it always contains the current state. `actions` are messages we send to the Redux Store which generally consist of a `type` and a `payload`. `reducers` are functions that return the next state.
+
+- [x] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+- Component state holds the state at the component level and passes data down as props. This can become problematic at scale as state resides all over the place in many different components. Application state, like redux maintains in the redux store, is maintained at the application level and accessible by any component that needs to access state.
+
+- [x] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+- `redux-thunk` is a package that allows us to make the action -> reducer flow asynchronous so we can make API calls from our action creators. It will intercept an `action-creator` and if it returns a function (thunk) it will invoke that function and pass in the dispatch function as an argument to it.
 
 ## Project Set Up
 
@@ -83,8 +91,8 @@ return dispatch => {
     name: 'Brainey',
     age: 200,
     height: '5cm',
-    id: 0
-  }
+    id: 0,
+  },
 ];
 ```
 
@@ -116,14 +124,14 @@ Example of object created in Smurf DB:
     name: 'Brainey',
     age: 200,
     height: '5cm',
-    id: 0
+    id: 0,
   },
   {
     name: 'Sleepy',
     age: 200,
     height: '5cm',
-    id: 1
-  }
+    id: 1,
+  },
 ];
 ```
 
@@ -176,7 +184,7 @@ output: [
     name: 'Sleepy',
     age: 200,
     height: '5cm',
-    id: 1
-  }
+    id: 1,
+  },
 ];
 ```
